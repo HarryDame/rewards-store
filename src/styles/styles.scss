@@ -1,0 +1,12 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.header-img-ctn {
+    position: relative;
+    height: max-content;
+    .header-img {
+        width: 100%;
+    }
+}
