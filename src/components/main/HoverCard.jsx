@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {Context} from "../../context/ContextProvider";
+import {UserContext} from "../../context/UserContext";
 import buyWithe from "../../assets/icons/buy-white.svg";
 import iconCoin from "../../assets/icons/coin.svg";
 
@@ -10,7 +10,7 @@ function HoverCard (props){
         _id
     } = props;
 
-    const {user} = useContext(Context) 
+    const {user} = useContext(UserContext) 
 
     return (
         <div className="hover-card">
