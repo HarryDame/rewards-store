@@ -8,14 +8,14 @@ export default function AppProvider({ children }) {
     const [user, setUser]= useState({name:"", points:""});
 
     const getUserData = async () => { 
-        const usuario = await UserServices.getUser();
-        console.log(usuario);
-        setUser(usuario); 
+        const userData = await UserServices.getUserInfo();
+        console.log(userData);
+        setUser(userData); 
     }
 
     useEffect(() => getUserData(),[]); 
   return (
-    <Context.Provider value={{ user }}>
+    <Context.Provider value={{ user, setUser }}>
       {children}
     </Context.Provider>
   );

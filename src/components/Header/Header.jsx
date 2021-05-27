@@ -1,12 +1,12 @@
 import React from "react";
-import HeaderBar from "./HeaderBar";
+import NavBar from "./NavBar";
 import HeaderImg from "./HeaderImg";
 // testear
 function Header (){
 
     return (
         <div>
-            <HeaderBar/>
+            <NavBar/>
             <HeaderImg/>
         </div>
     )

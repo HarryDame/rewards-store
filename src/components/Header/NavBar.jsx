@@ -2,13 +2,15 @@ import React, {useContext} from "react";
 import logo from "../../assets/aerolab-logo.svg";
 import coin from "../../assets/icons/coin.svg";
 import {Context} from "../../context/ContextProvider";
+import UserServices from '../../services/UserService';
 
-function HeaderBar(){
+function NavBar(){
 
     const {user:{name, points}} = useContext(Context);
 
     return(
-    <div className="header-bar">
+    <nav>
+        <div className="header-bar">
            <img src={logo} alt="aerolab"/>
            <div className="user">
                 <h3>{name}</h3>
@@ -20,6 +22,7 @@ function HeaderBar(){
                 </div>
            </div>           
         </div>
+    </nav>
     )
 }
-export default HeaderBar; 
+export default NavBar; 
