@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import Filter from "./Filters";
 import ProductContainer from "./ProductContainer";
+import Error from "../general/Error";
 import {ProductContext} from "../../context/ProductContext";
 
 const Main = () => {
@@ -26,8 +27,7 @@ const Main = () => {
 		<main className="main">
 			{
 				products.length < 1 ? 
-					<Error /> 
-				:
+					<Error /> :
 					<>
 						<Filter handleSort={handleSort} sort={sort} handlePage={handlePage} page={page} isFooter={false} />
 						<ProductContainer sort={sort} page={page} />

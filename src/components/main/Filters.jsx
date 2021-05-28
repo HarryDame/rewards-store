@@ -1,30 +1,67 @@
 import React from 'react';
 import rightArrow from "../../assets/icons/arrow-right.svg";
 import leftArrow from "../../assets/icons/arrow-left.svg";
+import {ProductContext} from "../../context/ProductContext";
 
-function Filter (){
-// Cambiarlo para facilitarlo con Callbacks
+const Filter = ({handlePage, page, isFooter})=>{
+
+
+    const {products, setProducts, showHistory} = useContext(ProductContext);
+	const prodLen = products.length;
+	const prodsOnPage = Math.min(16*page, prodLen);
+
+	const [activeFilter, setActiveFilter] = useState(0);
+	const [auxActive, setAuxActive] = useState(0);
+
+	const filtersParams = [
+		{callback: (p1, p2) => {
+			const prop = p1.createDate ? "createDate" : "_id";
+      return (p1[prop] < p2[prop]) ? -1 : 1;
+		}, label: 'Most recent'},
+		{callback: (p1, p2) => p1.cost - p2.cost, label: 'Lowest price'},
+		{callback: (p1, p2) => p2.cost - p1.cost, label: 'Highest price'},
+	];
+
+	const sortProducts = (filterId, sortFunction) => {
+		const sortedProducts = products.slice().sort(sortFunction);
+		setProducts(sortedProducts);
+	};
+
+	const handleFilter = (filterId) => {
+		setActiveFilter(filterId);
+	}
+
+	useEffect(() => {
+		sortProducts(activeFilter, filtersParams[activeFilter].callback)
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[activeFilter])
+
+	useEffect(() => {
+		const aux = activeFilter;
+		setActiveFilter(showHistory ? 0 : auxActive);
+		setAuxActive(aux);
+
+	},[showHistory])
+
+
     return (
-        <div className="filter">
-            {/* AddModals */}
-            <span className="prod-quant">16 of 32 products</span>
-            <div className="sort">
+        <div className={`filters-ctn ${isFooter ? "footer" : ""}`}>
+			<span className="product-index">{prodsOnPage} of {prodLen} products</span>
 
-                <span className="sort-by">Sort by:</span>
-                <button className="filter-btn">Most recent</button>
-                <button className="filter-btn">Lowes price</button>
-                <button className="filter-btn">Highest price</button>
-                
-            </div>
-            {/* useEffet tambien */}
-            <div className="move-btn">
-
-                <button className="arrow-btn"><img src={leftArrow} alt="Flecha a izquierda"/></button>
-
-                <button className="arrow-btn"><img src={rightArrow} alt="Flecha a derecha"/></button>
-
-            </div>     
-        </div>
+			<div className={`filters ${isFooter ? "hidden" : ""}`}>
+				<span className={`sort-title`}>Sort by: </span>
+				{filtersParams.map(({label}, i) => (
+					<button key={i} className={`filter ${activeFilter === i ? 'selected' : ''}`}
+						onClick={() => handleFilter(i)}>
+						{label}
+					</button>
+				))}
+			</div>
+			<div className="arrows">
+				<img src={left} alt="left-arrow" className={`left ${page === 1 ? "hidden" : ""}`} onClick={handlePage} name="-1"/>
+				<img src={right} alt="right-arrow" className={`right ${prodsOnPage >= prodLen ? "hidden" : ""}`} onClick={handlePage} name="1"/>
+			</div>
+		</div>
     )
 };
 
