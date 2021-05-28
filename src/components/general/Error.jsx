@@ -4,9 +4,8 @@ const Error = () => {
 	return(
 		<div className="error-ctn">
 			<h1 className="error-title">Ooops!</h1>
-            {/* icon error ¿se muestra ahora?*/}
 			<i className="far fa-frown error-icon"></i>
-			<h2 className="error-subtitle">We couldn't find products to show</h2>
+			<h2 className="error-subtitle">We couldn't find products to show...</h2>
 		</div>
 	)
 }

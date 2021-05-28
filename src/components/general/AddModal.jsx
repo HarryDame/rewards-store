@@ -1,10 +1,10 @@
 import React from "react";
 import UserService from "../../services/UserService";
 import {UserContext} from "../../context/UserContext";
-// import coin from "../../assets/icons/coin.svg";
+import coin from "../../assets/icons/coin.svg";
 
-//Y el showModal
-const AddModal = () =>{
+
+const AddModal = ({showModal}) =>{
 
 const {setUser} = useContext(UserContext);
 const handleAdd = async (amount) => {
@@ -22,23 +22,25 @@ const handleAdd = async (amount) => {
 }
 
     return(
-        <div className="modal-ctn">
+        <div className={`modal-ctn`} id="modal-ctn">
             <div className="add-modal">
-                <h3>add more coins</h3>
-            </div>
-            //Todavía no l
+            <h2 className="add-title">Add more coins<p className="emoji">&#129297;</p></h2>
+				<div className="close-ctn" onClick={showModal}>
+					<i className="fas fa-times"></i>
+				</div>
             <div className="add-btn" name="1000" onClick={() => handleAdd(1000)}>
-					{/* <img src="" alt="coin" className="coin"/> */}
+					<img src={coin} alt="coin" className="coin"/>
 					<h3 className="amount">1000</h3>
 				</div>
 				<div className="add-btn" name="5000" onClick={() => handleAdd(5000)}>
-					{/* <img src="" alt="coin" className="coin"/> */}
+					<img src={coin} alt="coin" className="coin"/>
 					<h3 className="amount">5000</h3>
 				</div>
 				<div className="add-btn" name="7500" onClick={() => handleAdd(7500)}>
-					{/* <img src="" alt="coin" className="coin"/> */}
+					<img src={coin} alt="coin" className="coin"/>
 					<h3 className="amount">7500</h3>
 				</div>
+            </div>
         </div>
 );
 
