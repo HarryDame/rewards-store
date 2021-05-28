@@ -6,6 +6,7 @@ function Filter (){
 // Cambiarlo para facilitarlo con Callbacks
     return (
         <div className="filter">
+            {/* AddModals */}
             <span className="prod-quant">16 of 32 products</span>
             <div className="sort">
                 <span className="sort-by">Sort by:</span>
@@ -15,8 +16,11 @@ function Filter (){
             </div>
             {/* useEffet tambien */}
             <div className="move-btn">
+
                 <button className="arrow-btn"><img src={leftArrow} alt="Flecha a izquierda"/></button>
+
                 <button className="arrow-btn"><img src={rightArrow} alt="Flecha a derecha"/></button>
+                
             </div>     
         </div>
     )
