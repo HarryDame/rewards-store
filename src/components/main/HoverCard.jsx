@@ -1,27 +1,17 @@
-import React, {useContext, useState} from "react";
-import {UserContext} from "../../context/UserContext";
-import buyWithe from "../../assets/icons/buy-white.svg";
-import iconCoin from "../../assets/icons/coin.svg";
+import React from "react";
+import coin from "../../assets/icons/coin.svg";
 
-function HoverCard (props){
+const HoverCard = ({cost, _id, handleRedeem}) => {
 
-    const {
-        cost,
-        _id
-    } = props;
+	return(
+		<div className="hover-filter">
+			<div className="cost-ctn">
+				<h3 className="product-cost">{cost}</h3>
+				<img src={coin} alt="coin" className="hover-coin"/>
+			</div>
+			<button className="redeem-btn" id={_id} value={cost} onClick={handleRedeem}>Redeem now</button>
+		</div>
+	)
+}
 
-    const {user} = useContext(UserContext) 
-
-    return (
-        <div className="hover-card">
-            <img src={buyWithe} alt="comprar"/>
-            <div className="cost">
-                <span className="cant-coin">{cost}</span>
-                <img className="" src={iconCoin} alt="coin"/>
-            </div>
-            <button className="redeem-btn">Redeem now</button>
-        </div>
-    )
-};
-
-export default HoverCard; 
+export default HoverCard;
