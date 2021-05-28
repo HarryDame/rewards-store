@@ -1,60 +1,53 @@
-import React, {useContext, useState, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import logo from "../../assets/aerolab-logo.svg";
 import coin from "../../assets/icons/coin.svg";
-import {UserContext} from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext";
+import { ProductContext } from "../../context/ProductContext";
 import UserService from "../../services/UserService";
 
-const NavBar = ({showModal})=>{
+const NavBar = ({showModal}) => {
+	
+	const {user} = useContext(UserContext);
+	const {products, setProducts} = useContext(ProductContext);
+	const {showHistory, setHistoryFlag} = useContext(ProductContext);
+	const [auxProds, setAuxProds] = useState([]);
 
-    const {user} = useContext(UserContext);
-	// const {products, setProducts} = useContext(ProductContext);
-	// const {showHistory, setHistoryFlag} = useContext(ProductContext);
-	// const [auxProds, setAuxProds] = useState([]);
+	const handleHistory = async () => {
+		setHistoryFlag(!showHistory);
+	}
 
+	const getHistory = async () => {
+		const history = await UserService.getRedeemHistory();
 
-    // const redeemHistoryFunction = async () =>{
+		if(products.toString() !== history.toString()){
+			setAuxProds(products);
+		}
+		
+		setProducts((showHistory ? history : auxProds));
+	}
 
-    //     const redeemHistoryFromFetch = await UserService.getRedeemHistory();
+	useEffect(() => {
+		if(showHistory !== null){
+			getHistory();
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[showHistory]);
 
-    //     if(products !== redeemHistoryFromFetch){
-    //         setAuxProducts(products);
-    //     }
-    //     setProducts((showHistory ? redeemHistoryFromFetch : auxProducts));
-    //     setOnHistory(showHistory);
-    // }
-    // const handleFlag = () => {
-    //     setFlag (!flag);
-    // };
+	return(
+		<div className="header-bar">
+			<img className="header-logo" src={logo} alt="logo"/>
+			<nav className="header-user">
+				<span className="header-username">{user && user.name}</span>
+				<div className="header-coins" onClick={showModal}>
+					<span className="header-coin-count">{user && user.points}</span>
+					<img src={coin} alt="coin" className="coin"/>
+				</div>
+				<button className={`header-username header-btn`} onClick={handleHistory}>{showHistory ? <i className="fas fa-home"></i> : <i className="fas fa-history"></i>}</button>
+				<button className={`header-username header-btn`} onClick={showModal}><i className="fas fa-plus-circle"></i></button>
+			</nav>
+		</div>
+	)
 
-    // const handleHistory = () =>{
-    //     setHistoryFlag(!showHistory);
-    // };
+}
 
-    // useEffect(() => {
-
-    //     if (showHistory != null){
-    //         redeemHistoryFunction();
-    //     }
-
-    // },[showHistory]);
-
-    return(
-        <nav>
-        <div className="header-bar">
-           <img src={logo} alt="Barrilete de aerolab"/>
-           <div className="user">
-            <h3>{user.name}</h3>
-            {/* <button className="header-button" onClick={handleHistory} title={`see ${name} history`}>{!showHistory ? <FontAwesomeIcon icon={faHistory} /> : <FontAwesomeIcon icon={faHome} /> }</button>                 */}
-                {/* <div className="user-coin" title="Add more coins" onClick={handleFlag}> */}
-                    <span className="cant-coin">
-                        {user.points}
-                    </span>
-                    <img className="icon-coin" src={coin} alt="Monedas"/>
-                {/* </div> */}
-           </div>
-        </div>
-    {/* {flag && <AddCoins/>}  */}
-    </nav>
-    )
-};
-export default NavBar; 
+export default NavBar

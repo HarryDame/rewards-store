@@ -1,16 +1,28 @@
-import React from "react";
-import NavBar from "./NavBar";
+import React, { useState, useContext } from "react";
 import HeaderImg from "./HeaderImg";
-// testear
-function Header (){
+import NavBar from "./NavBar";
+import AddModal from "../general/AddModal";
 
-    return (
-        <div>
-            <NavBar/>
-            <HeaderImg/>
-        </div>
-    )
-};
+const Header = () => {
+	const [shown, setShown] = useState(false);
 
+	const showModal = () => {
+		setShown(!shown);
+	}
 
-export default Header; 
+	return(
+		<header className="header">
+			<NavBar showModal={showModal}/>
+			{
+				shown ? 
+				<AddModal showModal={showModal}/>
+				:
+				null
+			}
+			<HeaderImg/>
+		</header>
+	)
+
+}
+
+export default Header;
