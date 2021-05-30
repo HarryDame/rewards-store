@@ -34,7 +34,7 @@ const NavBar = ({showModal}) => {
 	},[showHistory]);
 
 	return(
-		<div className="header-bar">
+		<div className="nav-bar">
 			<img className="header-logo" src={logo} alt="logo"/>
 			<nav className="header-user">
 				<span className="header-username">{user && user.name}</span>

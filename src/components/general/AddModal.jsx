@@ -9,7 +9,7 @@ const {setUser} = useContext(UserContext);
 
 const handleAdd = async (amount) => {
 	
-    const resp = await UserService.addCoins(amount);
+    const resp = await UserService.addCoins();
 
     if(resp){
         const newUser = await UserService.getUser();
