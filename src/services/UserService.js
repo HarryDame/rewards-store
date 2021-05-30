@@ -46,7 +46,7 @@ class UserService {
             return false;
         }
     }
-    static async getHistory() {
+    static async getRedeemHistory() {
 
         const headers = { headers: this.headers }
 

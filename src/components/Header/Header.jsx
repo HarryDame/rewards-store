@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import AddModal from "../general/AddModal";
 
 const Header = () => {
+	
 	const [shown, setShown] = useState(false);
 
 	const showModal = () => {

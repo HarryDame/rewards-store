@@ -9,10 +9,12 @@ const HeaderImg = () => {
 	const {user} = useContext(UserContext);
 
 	return(
+
 		<div className="header-img-ctn">
 			<h1 className="header-title">{products.toString() === user.redeemHistory.toString() ? `Redeem history` : `Electronics`}</h1>
 			<img className="header-img" src={headerImg} alt="electronics-img"/>
 		</div>
+		
 	)
 }
 

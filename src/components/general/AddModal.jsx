@@ -3,12 +3,12 @@ import UserService from "../../services/UserService";
 import {UserContext} from "../../context/UserContext";
 import coin from "../../assets/icons/coin.svg";
 
-
 const AddModal = ({showModal}) =>{
 
 const {setUser} = useContext(UserContext);
+
 const handleAdd = async (amount) => {
-		
+	
     const resp = await UserService.addCoins(amount);
 
     if(resp){
@@ -18,7 +18,6 @@ const handleAdd = async (amount) => {
     }else{
         alert("Failed to add coins.")
     }
-
 }
 
     return(

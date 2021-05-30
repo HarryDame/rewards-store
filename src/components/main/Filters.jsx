@@ -3,7 +3,7 @@ import rightArrow from "../../assets/icons/arrow-right.svg";
 import leftArrow from "../../assets/icons/arrow-left.svg";
 import {ProductContext} from "../../context/ProductContext";
 
-const Filter = ({handlePage, page, isFooter})=>{
+const Filter = ({handleSort, sort,handlePage, page, isFooter})=>{
 
 
     const {products, setProducts, showHistory} = useContext(ProductContext);
@@ -58,8 +58,8 @@ const Filter = ({handlePage, page, isFooter})=>{
 				))}
 			</div>
 			<div className="arrows">
-				<img src={left} alt="left-arrow" className={`left ${page === 1 ? "hidden" : ""}`} onClick={handlePage} name="-1"/>
-				<img src={right} alt="right-arrow" className={`right ${prodsOnPage >= prodLen ? "hidden" : ""}`} onClick={handlePage} name="1"/>
+				<img src={leftArrow} alt="left-arrow" className={`left ${page === 1 ? "hidden" : ""}`} onClick={handlePage} name="-1"/>
+				<img src={rightArrow} alt="right-arrow" className={`right ${prodsOnPage >= prodLen ? "hidden" : ""}`} onClick={handlePage} name="1"/>
 			</div>
 		</div>
     )
