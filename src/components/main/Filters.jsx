@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext,useEffect,useState} from 'react';
 import rightArrow from "../../assets/icons/arrow-right.svg";
 import leftArrow from "../../assets/icons/arrow-left.svg";
 import {ProductContext} from "../../context/ProductContext";
