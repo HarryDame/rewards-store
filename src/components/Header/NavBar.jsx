@@ -43,7 +43,7 @@ const NavBar = ({showModal}) => {
 					<img src={coin} alt="coin" className="coin"/>
 				</div>
 				<button className={`header-username header-btn`} onClick={handleHistory}>{showHistory ? <i className="fas fa-home"></i> : <i className="fas fa-history"></i>}</button>
-				<button className={`header-username header-btn`} onClick={showModal}><i className="fas fa-plus-circle"></i></button>
+				<button className={`header-username header-btn`} onClick={showModal}><i className="fas fa-plus"></i></button>
 			</nav>
 		</div>
 	)

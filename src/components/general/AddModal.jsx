@@ -23,7 +23,7 @@ const handleAdd = async (amount) => {
     return(
         <div className={`modal-ctn`} id="modal-ctn">
             <div className="add-modal">
-            <h2 className="add-title">Add more coins<p className="emoji">&#129297;</p></h2>
+            <h2 className="add-title">Add more coins<i class="fas fa-wallet"></i></h2>
 				<div className="close-ctn" onClick={showModal}>
 					<i className="fas fa-times"></i>
 				</div>
