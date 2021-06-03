@@ -36,7 +36,6 @@ const NavBar = ({showModal}) => {
 	return(
 
 		<div className="nav-bar">
-			{/* Algún estilo para loguito */}
 			<img className="header-logo" src={logo} alt="logo"/>
 			<nav className="header-user">
 				<span className="header-username">{user && user.name}</span>

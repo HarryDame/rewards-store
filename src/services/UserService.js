@@ -1,16 +1,16 @@
 class UserService {
-    static async getUserInfo() {
-        const headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFkOWI2NDliNzc4MTAwMjA5YzVhYTQiLCJpYXQiOjE2MjE5OTAyNDR9.5YW-aBwRpJZS88xYCvlvTv1Ri5x_LphIw7a5NvcC9GA"
-        }
 
-        // const headers = { headers: this.headers }
-        const url = "https://coding-challenge-api.aerolab.co/user/me";
+    static headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFkOWI2NDliNzc4MTAwMjA5YzVhYTQiLCJpYXQiOjE2MjE5OTAyNDR9.5YW-aBwRpJZS88xYCvlvTv1Ri5x_LphIw7a5NvcC9GA"
+    }
+    static async getUserInfo() {
+
+        const headers = { headers: this.headers }
 
         try {
-            let resp = await fetch(url, { headers })
+            let resp = await fetch(`https://coding-challenge-api.aerolab.co/user/me`, headers);
 
             if (resp.status !== 200) {
                 throw new Error(resp);
