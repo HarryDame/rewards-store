@@ -18,8 +18,8 @@ const ProductCard=(props)=> {
 
 	const [success, setSuccess] = useState(null);
   
-  const handleRedeem = async (event) =>{
-		const pid = event.target.id;
+  const handleRedeem = async (e) =>{
+		const pid = e.target.id;
 		const resp = await ProductService.redeemProduct(pid);
 
 		if(resp !== false){
