@@ -40,7 +40,7 @@ const Filter = ({handleSort, sort,handlePage, page, isFooter})=>{
 		const aux = activeFilter;
 		setActiveFilter(showHistory ? 0 : auxActive);
 		setAuxActive(aux);
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[showHistory])
 
 

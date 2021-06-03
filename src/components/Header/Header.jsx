@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import HeaderImg from "./HeaderImg";
 import NavBar from "./NavBar";
 import AddModal from "../general/AddModal";

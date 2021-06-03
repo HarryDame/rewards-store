@@ -1,3 +1,4 @@
+// import { cleanup } from "@testing-library/react";
 import React, {useState, useEffect} from "react";
 import ProductService from "../services/ProductService";
 
@@ -13,7 +14,11 @@ export default function ProductContextProvider({children}){
 		setProducts(products);
 	}
 
-	useEffect(() => {fetchProducts();},[]);
+	useEffect(() => {
+		setTimeout(() => {
+			fetchProducts();
+		}, 600);
+	},[]);
 
 	return(
 		<ProductContext.Provider value={{products, setProducts, showHistory, setHistoryFlag}}>

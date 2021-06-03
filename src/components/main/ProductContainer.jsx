@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useContext } from "react";
+
+import React, { useContext } from "react";
 import ProductCard from "./ProductCard";
 import { ProductContext } from "../../context/ProductContext";
 
@@ -7,10 +7,11 @@ import { ProductContext } from "../../context/ProductContext";
 const ProductContainer = ({sort, page}) => {
 
 	const {products} = useContext(ProductContext);
-	
+
 	return(
 
-		<div className="product-container">{products && products.map((product, index) => {
+		<div className="product-container">
+			{products && products.map((product, index) => {
 
 			const limit = page * 16;
 			const offSet = limit - 16;

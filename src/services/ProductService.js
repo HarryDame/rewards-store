@@ -3,17 +3,15 @@ class ProductService {
 
     static headers = {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFkOWI2NDliNzc4MTAwMjA5YzVhYTQiLCJpYXQiOjE2MjE5OTAyNDR9.5YW-aBwRpJZS88xYCvlvTv1Ri5x_LphIw7a5NvcC9GA"
+        Accept: "application/json",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFkOWI2NDliNzc4MTAwMjA5YzVhYTQiLCJpYXQiOjE2MjE5OTAyNDR9.5YW-aBwRpJZS88xYCvlvTv1Ri5x_LphIw7a5NvcC9GA"
     }
-    static async getProducts() {
+    static getProducts = async() => {
 
-        const headers = {
-            headers: this.headers
-        }
+        const headers = { headers: this.headers }
 
         try {
-            const resp = await fetch("https://coding-challenge-api.aerolab.co/products", headers);
+            let resp = await fetch("https://coding-challenge-api.aerolab.co/products", headers);
             if (resp.status !== 200) {
                 throw new Error(resp);
             }
@@ -23,7 +21,7 @@ class ProductService {
         }
     }
 
-    static async redeemProduct(productId) {
+    static redeemProduct = async(productId) => {
 
         const params = {
             body: JSON.stringify({ productId }),

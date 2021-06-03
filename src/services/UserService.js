@@ -2,10 +2,10 @@ class UserService {
 
     static headers = {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFkOWI2NDliNzc4MTAwMjA5YzVhYTQiLCJpYXQiOjE2MjE5OTAyNDR9.5YW-aBwRpJZS88xYCvlvTv1Ri5x_LphIw7a5NvcC9GA"
+        Accept: "application/json",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFkOWI2NDliNzc4MTAwMjA5YzVhYTQiLCJpYXQiOjE2MjE5OTAyNDR9.5YW-aBwRpJZS88xYCvlvTv1Ri5x_LphIw7a5NvcC9GA"
     }
-    static async getUserInfo() {
+    static getUserInfo = async() => {
 
         const headers = { headers: this.headers }
 
@@ -23,10 +23,10 @@ class UserService {
             return false;
         }
     }
-    static async addCoins(amount) {
+    static addCoins = async(amount) => {
 
         const params = {
-            body: JSON.stringify({ amount: amount, }),
+            body: JSON.stringify({ amount }),
             method: "post",
             mode: "cors",
             headers: this.headers
@@ -46,12 +46,12 @@ class UserService {
             return false;
         }
     }
-    static async getRedeemHistory() {
+    static getRedeemHistory = async() => {
 
         const headers = { headers: this.headers }
 
         try {
-            const resp = await fetch(`https://coding-challenge-api.aerolab.co/user/history`, headers);
+            let resp = await fetch(`https://coding-challenge-api.aerolab.co/user/history`, headers);
 
             if (resp.status !== 200) {
                 throw new Error("Error");

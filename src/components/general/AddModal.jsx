@@ -12,7 +12,6 @@ const handleAdd = async (amount) => {
     const resp = await UserService.addCoins(amount);
 
     if(resp){
-        // cuidado con los getUserInfo
         const newUser = await UserService.getUserInfo();
         setUser(newUser);
         alert(resp.message + ". You've added " + amount + " coins");
